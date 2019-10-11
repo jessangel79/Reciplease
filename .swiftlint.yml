@@ -1,0 +1,11 @@
+disabled_rules: # rule identifiers to exclude from running
+ - trailing_whitespace
+ # - cyclomatic_complexity
+excluded: # paths to ignore during linting. Takes precedence over `included`.
+ - Carthage
+ - Pods
+ # - RecipleaseTests/_____Tests/_____ServiceTestCase.swift
+
+identifier_name:
+  excluded:
+    - id
