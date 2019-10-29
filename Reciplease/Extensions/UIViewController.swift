@@ -7,9 +7,9 @@
 //
 
 import UIKit
-import CoreData
+//import CoreData
 
-// MARK: - Extension to custom labels, buttons, textField and textView
+// MARK: - Extension to custom buttons and views
 
 extension UIViewController {
 
@@ -80,7 +80,33 @@ extension UIViewController {
     }
 }
 
-// MARK: - Extension to debug
+// MARK: - Extension to open url
+
+extension UIViewController {
+    func webViewRecipe(urlString: String) {
+        guard let url = URL(string: urlString) else { return }
+        guard UIApplication.shared.canOpenURL(url) else { return }
+        UIApplication.shared.open(url)
+    }
+}
+
+// MARK: - Extension to delete favorites and manage the button of favorites
+
+extension UIViewController {
+    func deleteRecipeFavorite(recipeTitle: String?, url: String?, coreDataManager: CoreDataManager?, barButtonItem: UIBarButtonItem) {
+        coreDataManager?.deleteRecipe(recipeTitle: recipeTitle ?? "", url: url ?? "")
+        setupBarButtonItem(color: .white, barButtonItem: barButtonItem)
+
+        debugFavorites(titleDebug: "Favorite deleted !!! ", coreDataManager: coreDataManager)
+    }
+    
+    func setupBarButtonItem(color: UIColor, barButtonItem: UIBarButtonItem) {
+        barButtonItem.tintColor = color
+        navigationItem.rightBarButtonItem = barButtonItem
+    }
+}
+
+// MARK: - Extension to debug ### To delete ###
 
 extension UIViewController {
     /// function to debug ### To delete ###
@@ -94,48 +120,24 @@ extension UIViewController {
             print(recipe.yield)
             print(recipe.title ?? "title error")
             print(recipe.ingredients ?? "ingredients error")
+            print(recipe.url ?? "url error")
             print("\n")
         }
     }
 }
 
-// MARK: - Extension to open url
-
-extension UIViewController {
-    func webViewRecipe(urlString: String) {
-//        let urlString = cellule.recipe.url
-        guard let url = URL(string: urlString) else { return }
-        guard UIApplication.shared.canOpenURL(url) else { return }
-        UIApplication.shared.open(url)
-    }
-}
-
 // MARK: - Extension to config nib of table view cell // ???? A garder ????
 
-extension UIViewController {
-    func nibRegisterForCell(tableView: UITableView, nibName: String, forCellReuseIdentifier: String) {
-        let nib = UINib(nibName: nibName, bundle: nil)
-        tableView.register(nib, forCellReuseIdentifier: forCellReuseIdentifier)
+//extension UIViewController {
+//    func nibRegisterForCell(tableView: UITableView, nibName: String, forCellReuseIdentifier: String) {
+//        let nib = UINib(nibName: nibName, bundle: nil)
+//        tableView.register(nib, forCellReuseIdentifier: forCellReuseIdentifier)
+//        
+//        tableView.reloadData()
+//    }
+//}
         
-        tableView.reloadData()
-    }
-}
-
-// MARK: - TEST
-
-extension UIViewController {
-    func deleteRecipeFavorite(recipeTitle: String?, image: String?, coreDataManager: CoreDataManager?, barButtonItem: UIBarButtonItem) {
-//        guard let recipeTitle = cellule?.title else { return }
-//        guard let image = cellule.image else { return }
-        coreDataManager?.deleteRecipe(recipeTitle: recipeTitle ?? "", image: image ?? "")
-        setupBarButtonItem(color: .white, barButtonItem: barButtonItem)
-
-        debugFavorites(titleDebug: "Favorite deleted !!! ", coreDataManager: coreDataManager)
-    }
-    
-    func setupBarButtonItem(color: UIColor, barButtonItem: UIBarButtonItem) {
-        barButtonItem.tintColor = color
-        navigationItem.rightBarButtonItem = barButtonItem
-    }
-
-}
+//        nibRegisterForCell(tableView: recipesTableView,
+//                           nibName: StaticVariable.ListRecipesTableViewCell,
+//                           forCellReuseIdentifier: StaticVariable.ListRecipesCell)
+        

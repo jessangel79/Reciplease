@@ -46,14 +46,8 @@ class FavoritesRecipesViewController: UIViewController {
         super.viewDidLoad()
         coreDataFunction()
         
-        // display debug ####
         print("In FavoritesRecipesViewController : ")
         debugFavorites(titleDebug: "Recipes entity", coreDataManager: coreDataManager)
-        // display debug ####
-        
-//        nibRegisterForCell(tableView: favoritesRecipesTableView,
-//                           nibName: StaticVariable.ListRecipesTableViewCell,
-//                           forCellReuseIdentifier: StaticVariable.ListRecipesCell)
         
         let nib = UINib(nibName: StaticVariable.ListRecipesTableViewCell, bundle: nil)
         favoritesRecipesTableView.register(nib, forCellReuseIdentifier: StaticVariable.ListRecipesCell)

@@ -18,7 +18,7 @@ class RecipeService {
         self.recipeSession = recipeSession
     }
     
-//    private let keyRecipeSearch = valueForAPIKey(named: "API_RecipeSearch")
+    private let keyRecipeSearch = valueForAPIKey(named: "API_RecipeSearch")
     
     // MARK: - Methods
     
@@ -45,11 +45,9 @@ class RecipeService {
     }
     
     private func createRecipeSearchUrl(ingredientsList: [String]) -> URL? {
-        let ingredientUrl = ingredientsList.joined(separator: ",")
-//        let ingredientUrl = "&q=" + ingredientsList.joined(separator: ",")
-//        let apiKeyRecipe = "&app_key=\(keyRecipeSearch)"
-//        guard let url = URL(string: recipeSession.urlStringApi + apiKeyRecipe + ingredientUrl) else { return nil }
-        guard let url = URL(string: recipeSession.urlStringApi + ingredientUrl) else { return nil }
+        let ingredientUrl = "&q=" + ingredientsList.joined(separator: ",")
+        let apiKeyRecipe = "&app_key=\(keyRecipeSearch)"
+        guard let url = URL(string: recipeSession.urlStringApi + apiKeyRecipe + ingredientUrl) else { return nil }
 
         print(url)
         return url

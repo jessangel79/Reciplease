@@ -12,7 +12,6 @@ import UIKit
 struct StaticVariable {
     static let SearchCell = "SearchCell"
     static let ListRecipesCell = "ListRecipesCell"
-    
     static let SearchTableViewCell = "SearchTableViewCell"
     static let ListRecipesTableViewCell = "ListRecipesTableViewCell"
 }
@@ -65,10 +64,6 @@ class SearchRecipesViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         customInterfaceSearch(allButtons: allButtons)
-        
-//        nibRegisterForCell(tableView: ingredientsTableView,
-//                           nibName: StaticVariable.SearchTableViewCell,
-//                           forCellReuseIdentifier: StaticVariable.SearchCell)
         
         let nib = UINib(nibName: StaticVariable.SearchTableViewCell, bundle: nil)
         ingredientsTableView.register(nib, forCellReuseIdentifier: StaticVariable.SearchCell)

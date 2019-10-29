@@ -47,10 +47,10 @@ final class CoreDataManager {
         coreDataStack.saveContext()
     }
     
-    func deleteRecipe(recipeTitle: String, image: String) {
+    func deleteRecipe(recipeTitle: String, url: String) {
         let request: NSFetchRequest<RecipeEntity> = RecipeEntity.fetchRequest()
         request.predicate = NSPredicate(format: "title == %@", recipeTitle)
-        request.predicate = NSPredicate(format: "image == %@", image)
+        request.predicate = NSPredicate(format: "url == %@", url)
 
         if let entity = try? managedObjectContext.fetch(request) {
             entity.forEach { managedObjectContext.delete($0) }
@@ -58,10 +58,10 @@ final class CoreDataManager {
         coreDataStack.saveContext()
     }
     
-    func checkIsRecipeIsFavorite(recipeTitle: String, image: String) -> Bool {
+    func checkIsRecipeIsFavorite(recipeTitle: String, url: String) -> Bool {
         let request: NSFetchRequest<RecipeEntity> = RecipeEntity.fetchRequest()
         request.predicate = NSPredicate(format: "title == %@", recipeTitle)
-        request.predicate = NSPredicate(format: "image == %@", image)
+        request.predicate = NSPredicate(format: "url == %@", url)
         
         guard let count = try? managedObjectContext.count(for: request) else { return false }
         return count == 0 ? false : true

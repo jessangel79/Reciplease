@@ -23,7 +23,6 @@ open class CoreDataStack {
 
     // MARK: - Core Data stack
 
-    //swiftlint:disable unused_closure_parameter
     public lazy var persistentContainer: NSPersistentContainer = {
         let container = NSPersistentContainer(name: modelName)
         container.loadPersistentStores(completionHandler: { (storeDescription, error) in
@@ -33,7 +32,6 @@ open class CoreDataStack {
         })
         return container
     }()
-    //swiftlint:enable unused_closure_parameter
 
     public lazy var mainContext: NSManagedObjectContext = {
         return persistentContainer.viewContext

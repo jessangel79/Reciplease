@@ -20,13 +20,4 @@ extension UIResponder {
             totalTimeLabel.text = String(totalTimeTemp / 60) + " h"
         }
     }
-    
-//    func calcTotalTime(_ totalTime: Int?, totalTimeLabel: UILabel) {
-//        guard let totalTimeTemp = totalTime else { return }
-//        if totalTimeTemp < 60 {
-//            totalTimeLabel.text = String(totalTimeTemp) + " min"
-//        } else {
-//            totalTimeLabel.text = String(totalTimeTemp / 60) + " h"
-//        }
-//    }
 }

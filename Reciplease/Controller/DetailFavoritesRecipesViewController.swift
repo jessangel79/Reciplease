@@ -35,7 +35,7 @@ class DetailFavoritesRecipesViewController: UIViewController {
     @IBAction func favoritesBarButtonItemTapped(_ sender: UIBarButtonItem) {
         checkIfRecipeIsFavorite()
         deleteRecipeFavorite(recipeTitle: cellule?.title,
-                             image: cellule?.image,
+                             url: cellule?.url,
                              coreDataManager: coreDataManager,
                              barButtonItem: favoritesBarButtonItem)
     }
@@ -72,9 +72,9 @@ class DetailFavoritesRecipesViewController: UIViewController {
 
     private func checkIfRecipeIsFavorite() {
         guard let recipeTitle = cellule.title else { return }
-        guard let image = cellule.image else { return }
+        guard let url = cellule.url else { return }
         guard let checkIsRecipeIsFavorite = coreDataManager?.checkIsRecipeIsFavorite(recipeTitle: recipeTitle,
-                                                                                     image: image) else { return }
+                                                                                     url: url) else { return }
 
         recipeIsFavorite = checkIsRecipeIsFavorite
 

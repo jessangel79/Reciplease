@@ -36,7 +36,7 @@ class DetailRecipeViewController: UIViewController {
         checkIfRecipeIsFavorite()
 //        !recipeIsFavorite ? addRecipeToFavorites() : deleteRecipeFavorite()
         !recipeIsFavorite ? addRecipeToFavorites() : deleteRecipeFavorite(recipeTitle: cellule?.recipe.label,
-                                                                          image: cellule?.recipe.image,
+                                                                          url: cellule?.recipe.url,
                                                                           coreDataManager: coreDataManager,
                                                                           barButtonItem: favoritesBarButtonItem)
     }
@@ -86,9 +86,9 @@ class DetailRecipeViewController: UIViewController {
     
     private func checkIfRecipeIsFavorite() {
         guard let recipeTitle = cellule?.recipe.label else { return }
-        guard let image = cellule?.recipe.image else { return }
+        guard let url = cellule?.recipe.url else { return }
         guard let checkIsRecipeIsFavorite = coreDataManager?.checkIsRecipeIsFavorite(
-            recipeTitle: recipeTitle, image: image) else { return }
+            recipeTitle: recipeTitle, url: url) else { return }
 
         recipeIsFavorite = checkIsRecipeIsFavorite
 
@@ -128,49 +128,7 @@ class DetailRecipeViewController: UIViewController {
 //        favoritesBarButtonItem.tintColor = color
 //        navigationItem.rightBarButtonItem = favoritesBarButtonItem
 //    }
-    
-    /// delete all for tests ### To delete ###
-    fileprivate func deleteAllRecipesFavorites() {
-        coreDataManager?.deleteAllRecipes()
-        print("delete all recipes ok")
-    }
-    
-//    private func webViewRecipe() {
-//        let urlString = cellule.recipe.url
-//        guard let url = URL(string: urlString) else { return }
-//        guard UIApplication.shared.canOpenURL(url) else { return }
-//        UIApplication.shared.open(url)
-//    }
-    
-//    /// function to debug ### To delete ###
-//    fileprivate func debugFavorites(titleDebug: String) {
-//        print(titleDebug)
-//        print("--------------------")
-//        for recipe in coreDataManager?.recipes ?? [RecipeEntity]() {
-//            print("resultat callback :")
-//            print(recipe.totalTime)
-//            print(recipe.image as Any)
-//            print(recipe.yield)
-//            print(recipe.title ?? "title error")
-//            print(recipe.ingredients ?? "ingredients error")
-//            print("\n")
-//        }
-//    }
 }
-
-// MARK: - Navigation
-
-//extension DetailRecipeViewController {
-//    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-//        if segue.identifier == segueToRecipesList {
-//            guard let listRecipesVC = segue.destination as? ListRecipesViewController else { return }
-//            listRecipesVC.recipesList = recipesList
-//        }
-//    }
-//}
-
-//        totalTimeLabel.text =  String(cellule.recipe.totalTime ?? 0) + " min"
-//        calcTotalTime(cellule.recipe.totalTime ?? 0)
     
 // MARK: - In extension UIResponder
 //    fileprivate func calcTotalTime(_ totalTime: Int) {

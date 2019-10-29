@@ -8,11 +8,6 @@
 
 import UIKit
 
-// Trick to get static variable in Swift
-//struct StaticVariableList {
-//    static let ListRecipesCell = "ListRecipesCell"
-//}
-
 class ListRecipesViewController: UIViewController {
     
     // MARK: - Outlets
@@ -34,11 +29,7 @@ class ListRecipesViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-//        nibRegisterForCell(tableView: recipesTableView,
-//                           nibName: StaticVariable.ListRecipesTableViewCell,
-//                           forCellReuseIdentifier: StaticVariable.ListRecipesCell)
-        
+
         let nib = UINib(nibName: StaticVariable.ListRecipesTableViewCell, bundle: nil)
         recipesTableView.register(nib, forCellReuseIdentifier: StaticVariable.ListRecipesCell)
         
@@ -101,30 +92,3 @@ extension ListRecipesViewController {
         }
     }
 }
-// MARK: - Keyboard
-
-//extension ListRecipesViewController: UITextFieldDelegate {
-//    @IBAction func dismissKeyboard(_ sender: UITapGestureRecognizer) {
-//        ingredientTextField.resignFirstResponder()
-//    }
-//
-//    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-//        addIngredient()
-//        ingredientTextField.resignFirstResponder()
-//        return true
-//    }
-//}
-
-// MARK: - UITableViewDelegate
-
-//extension ListRecipesViewController: UITableViewDelegate {
-//
-//    /// delete a row in tableView
-//    func tableView(_ tableView: UITableView,
-//                   commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
-//        if editingStyle == .delete {
-//            recipesList.remove(at: indexPath.row)
-//            tableView.deleteRows(at: [indexPath], with: .fade)
-//        }
-//    }
-//}

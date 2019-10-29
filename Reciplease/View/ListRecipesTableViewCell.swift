@@ -27,11 +27,18 @@ class ListRecipesTableViewCell: UITableViewCell {
         yieldLabel.text = String(yield)
         recipeImageView.load(urlImageString: image ?? "ImageDefault1024x768" + ".jpg")
         calcTotalTime(totalTime ?? 0, totalTimeLabel: totalTimeLabel)
+        
 //        totalTimeLabel.text = String(totalTime ?? 0)
 //        totalTimeLabel.text = String(totalTime ?? 0) + " min"
 //        totalTimeLabel.text = String((totalTime ?? 0) / 60) + " h"
 //        calcTotalTime(totalTime)
     }
+    
+//    override func setSelected(_ selected: Bool, animated: Bool) {
+//        super.setSelected(selected, animated: animated)
+//
+//        // Configure the view for the selected state
+//    }
     
 // MARK: - In extension UIResponder
 //    fileprivate func calcTotalTime(_ totalTime: Int) {
@@ -42,11 +49,4 @@ class ListRecipesTableViewCell: UITableViewCell {
 //            totalTimeLabel.text = String(totalTimeTemp / 60) + " h"
 //        }
 //    }
-
-//    override func setSelected(_ selected: Bool, animated: Bool) {
-//        super.setSelected(selected, animated: animated)
-//
-//        // Configure the view for the selected state
-//    }
-    
 }
