@@ -7,69 +7,33 @@
 //
 
 import UIKit
+import CoreData
 
 // MARK: - Extension to custom labels, buttons, textField and textView
 
 extension UIViewController {
 
-    /// custom interface Exchange Rate
+    /// custom interface Search Recipes
     func customInterfaceSearch(allButtons: [UIButton]) {
         for button in allButtons {
             customButton(button: button)
         }
     }
 
-    /// custom interface Exchange Rate
-//    func customInterfaceExchangeRate(label: UILabel, textField: UITextField, button: UIButton) {
-//        customLabel(label: label)
-//        customTextField(textField: textField)
-//        customButton(button: button)
-//    }
-
-    /// custom interface Translation
-//    func customInterfaceTranslation(textView: UITextView, textField: UITextField, button: UIButton) {
-//        customTextView(textView: textView)
-//        customTextField(textField: textField)
-//        customButton(button: button)
-//    }
-
-    // custom interface Weather
-//    func customWeatherInterface(allLabels: [UILabel], button: UIButton) {
-//        for label in allLabels {
-//            customLabel(label: label)
-//        }
-//        customButton(button: button)
-//    }
-
-    // custom labels
-//    private func customLabel(label: UILabel) {
-//        label.layer.backgroundColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
-//        label.layer.cornerRadius = 10
-//        label.layer.shadowColor = UIColor.black.cgColor
-//        label.layer.shadowOpacity = 0.8
-//    }
-
-    // custom textFields
-//    private func customTextField(textField: UITextField) {
-//        textField.layer.backgroundColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
-//        textField.layer.borderColor = UIColor.gray.cgColor
-//        textField.layer.borderWidth = 1
-//    }
-
-    // custom textViews
-//    private func customTextView(textView: UITextView) {
-//        textView.clipsToBounds = false
-//        textView.layer.backgroundColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
-//        textView.layer.cornerRadius = 10
-//        textView.layer.shadowColor = UIColor.black.cgColor
-//        textView.layer.shadowOpacity = 0.8
-//    }
-
-    // custom buttons
-    private func customButton(button: UIButton) {
+    /// custom buttons
+    func customButton(button: UIButton) {
         button.layer.cornerRadius = 4
 //        button.layer.shadowColor = UIColor.black.cgColor
 //        button.layer.shadowOpacity = 0.8
+    }
+    
+    /// custom views
+    func customView(view: UIView) {
+        view.layer.cornerRadius = 4
+        view.layer.borderColor = UIColor.white.cgColor
+        view.layer.borderWidth = 1.0
+    //        view.layer.shadowColor = UIColor.black.cgColor
+    //        view.layer.shadowOpacity = 0.8
     }
 }
 
@@ -85,11 +49,93 @@ extension UIViewController {
 // MARK: - Extension to display a alert message to the user
 
 extension UIViewController {
+    /// Enumeration of the error
+    enum AlertError {
+        case arrayIsEmpty
+        case noRecipe
+        case errorNetwork
+    }
+
     /// Alert message to user
-    func presentAlert(message: String) {
-        let alert = UIAlertController(title: "Error", message: message, preferredStyle: .alert)
+    func presentAlert(typeError: AlertError) {
+        var message: String
+        var title: String
+        
+        switch typeError {
+        case .arrayIsEmpty:
+            title = "No ingredient"
+            message = "Please add an ingredient."
+        case .noRecipe:
+            title = "No recipe"
+            message = "Sorry there is no recipe."
+        case .errorNetwork:
+            title = "Error download"
+            message = "The download failed."
+        }
+        
+        let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
         let action = UIAlertAction(title: "OK", style: .cancel, handler: nil)
         alert.addAction(action)
         present(alert, animated: true, completion: nil)
     }
+}
+
+// MARK: - Extension to debug
+
+extension UIViewController {
+    /// function to debug ### To delete ###
+    func debugFavorites(titleDebug: String, coreDataManager: CoreDataManager?) {
+        print(titleDebug)
+        print("--------------------")
+        for recipe in coreDataManager?.recipes ?? [RecipeEntity]() {
+            print("resultat callback :")
+            print(recipe.totalTime)
+            print(recipe.image as Any)
+            print(recipe.yield)
+            print(recipe.title ?? "title error")
+            print(recipe.ingredients ?? "ingredients error")
+            print("\n")
+        }
+    }
+}
+
+// MARK: - Extension to open url
+
+extension UIViewController {
+    func webViewRecipe(urlString: String) {
+//        let urlString = cellule.recipe.url
+        guard let url = URL(string: urlString) else { return }
+        guard UIApplication.shared.canOpenURL(url) else { return }
+        UIApplication.shared.open(url)
+    }
+}
+
+// MARK: - Extension to config nib of table view cell // ???? A garder ????
+
+extension UIViewController {
+    func nibRegisterForCell(tableView: UITableView, nibName: String, forCellReuseIdentifier: String) {
+        let nib = UINib(nibName: nibName, bundle: nil)
+        tableView.register(nib, forCellReuseIdentifier: forCellReuseIdentifier)
+        
+        tableView.reloadData()
+    }
+}
+
+// MARK: - TEST
+
+extension UIViewController {
+    func deleteRecipeFavorite(recipeTitle: String?, image: String?, coreDataManager: CoreDataManager?, barButtonItem: UIBarButtonItem) {
+//        guard let recipeTitle = cellule?.title else { return }
+//        guard let image = cellule.image else { return }
+        coreDataManager?.deleteRecipe(recipeTitle: recipeTitle ?? "", image: image ?? "")
+        setupBarButtonItem(color: .white, barButtonItem: barButtonItem)
+
+        debugFavorites(titleDebug: "Favorite deleted !!! ", coreDataManager: coreDataManager)
+    }
+    
+    func setupBarButtonItem(color: UIColor, barButtonItem: UIBarButtonItem) {
+        barButtonItem.tintColor = color
+        navigationItem.rightBarButtonItem = barButtonItem
+    }
+
 }
