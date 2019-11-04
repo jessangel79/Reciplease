@@ -7,7 +7,6 @@
 //
 
 import UIKit
-//import CoreData
 
 // MARK: - Extension to custom buttons and views
 
@@ -53,7 +52,6 @@ extension UIViewController {
     enum AlertError {
         case arrayIsEmpty
         case noRecipe
-        case errorNetwork
     }
 
     /// Alert message to user
@@ -68,9 +66,6 @@ extension UIViewController {
         case .noRecipe:
             title = "No recipe"
             message = "Sorry there is no recipe."
-        case .errorNetwork:
-            title = "Error download"
-            message = "The download failed."
         }
         
         let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
@@ -97,7 +92,7 @@ extension UIViewController {
         coreDataManager?.deleteRecipe(recipeTitle: recipeTitle ?? "", url: url ?? "")
         setupBarButtonItem(color: .white, barButtonItem: barButtonItem)
 
-        debugFavorites(titleDebug: "Favorite deleted !!! ", coreDataManager: coreDataManager)
+        debugFavorites(titleDebug: "Favorite deleted", coreDataManager: coreDataManager)
     }
     
     func setupBarButtonItem(color: UIColor, barButtonItem: UIBarButtonItem) {
@@ -106,7 +101,7 @@ extension UIViewController {
     }
 }
 
-// MARK: - Extension to debug ### To delete ###
+// MARK: - Extension to debug
 
 extension UIViewController {
     /// function to debug ### To delete ###
@@ -125,19 +120,3 @@ extension UIViewController {
         }
     }
 }
-
-// MARK: - Extension to config nib of table view cell // ???? A garder ????
-
-//extension UIViewController {
-//    func nibRegisterForCell(tableView: UITableView, nibName: String, forCellReuseIdentifier: String) {
-//        let nib = UINib(nibName: nibName, bundle: nil)
-//        tableView.register(nib, forCellReuseIdentifier: forCellReuseIdentifier)
-//        
-//        tableView.reloadData()
-//    }
-//}
-        
-//        nibRegisterForCell(tableView: recipesTableView,
-//                           nibName: StaticVariable.ListRecipesTableViewCell,
-//                           forCellReuseIdentifier: StaticVariable.ListRecipesCell)
-        

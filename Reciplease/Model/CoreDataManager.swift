@@ -63,8 +63,8 @@ final class CoreDataManager {
         request.predicate = NSPredicate(format: "title == %@", recipeTitle)
         request.predicate = NSPredicate(format: "url == %@", url)
         
-        guard let count = try? managedObjectContext.count(for: request) else { return false }
-        return count == 0 ? false : true
-//        return count == 1 ? true : false
+        guard let counter = try? managedObjectContext.count(for: request) else { return false }
+        return counter == 0 ? false : true
+//        return counter == 1 ? true : false
     }
 }

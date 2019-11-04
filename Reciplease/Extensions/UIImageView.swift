@@ -18,7 +18,6 @@ extension UIImageView {
                 if let image = UIImage(data: data) {
                     DispatchQueue.main.async {
                         self?.image = image
-//                        self?.image = image.alpha(0.8)
                     }
                 } else {
                     self?.image = UIImage(named: "ImageDefault1024x768" + ".jpg")

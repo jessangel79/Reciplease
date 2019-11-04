@@ -8,14 +8,6 @@
 
 import UIKit
 
-// Trick to get static variable in Swift
-struct StaticVariable {
-    static let SearchCell = "SearchCell"
-    static let ListRecipesCell = "ListRecipesCell"
-    static let SearchTableViewCell = "SearchTableViewCell"
-    static let ListRecipesTableViewCell = "ListRecipesTableViewCell"
-}
-
 class SearchRecipesViewController: UIViewController {
 
     // MARK: - Outlets
@@ -38,7 +30,7 @@ class SearchRecipesViewController: UIViewController {
     
     // MARK: - Actions
     
-    @IBAction func addButtonTapped(_ sender: UIButton) {
+    @IBAction private func addButtonTapped(_ sender: UIButton) {
         addIngredient()
         ingredientTextField.resignFirstResponder()
         ingredientsTableView.reloadData()
@@ -65,14 +57,10 @@ class SearchRecipesViewController: UIViewController {
         super.viewDidLoad()
         customInterfaceSearch(allButtons: allButtons)
         
-        let nib = UINib(nibName: StaticVariable.SearchTableViewCell, bundle: nil)
-        ingredientsTableView.register(nib, forCellReuseIdentifier: StaticVariable.SearchCell)
+        let nib = UINib(nibName: Constants.SearchTableViewCell, bundle: nil)
+        ingredientsTableView.register(nib, forCellReuseIdentifier: Constants.SearchCell)
 
         ingredientsTableView.reloadData()
-    }
-    
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
     }
     
     private func getRecipes() {
@@ -121,7 +109,7 @@ extension SearchRecipesViewController: UITableViewDataSource {
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let searchCell = tableView.dequeueReusableCell(
-            withIdentifier: StaticVariable.SearchCell,
+            withIdentifier: Constants.SearchCell,
             for: indexPath) as? SearchTableViewCell else {
             return UITableViewCell()
         }

@@ -49,14 +49,9 @@ class FavoritesRecipesViewController: UIViewController {
         print("In FavoritesRecipesViewController : ")
         debugFavorites(titleDebug: "Recipes entity", coreDataManager: coreDataManager)
         
-        let nib = UINib(nibName: StaticVariable.ListRecipesTableViewCell, bundle: nil)
-        favoritesRecipesTableView.register(nib, forCellReuseIdentifier: StaticVariable.ListRecipesCell)
-        
+        let nib = UINib(nibName: Constants.ListRecipesTableViewCell, bundle: nil)
+        favoritesRecipesTableView.register(nib, forCellReuseIdentifier: Constants.ListRecipesCell)
         favoritesRecipesTableView.reloadData()
-    }
-    
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
     }
     
     private func coreDataFunction() {
@@ -79,16 +74,17 @@ extension FavoritesRecipesViewController: UITableViewDataSource {
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let listRecipesCell = tableView.dequeueReusableCell(
-            withIdentifier: StaticVariable.ListRecipesCell,
+            withIdentifier: Constants.ListRecipesCell,
             for: indexPath) as? ListRecipesTableViewCell else {
             return UITableViewCell()
         }
-        let recipes = coreDataManager?.recipes[indexPath.row]
-        listRecipesCell.configure(title: recipes?.title ?? "",
-                                  ingredients: recipes?.ingredients ?? "",
-                                  yield: Int(recipes?.yield ?? 0),
-                                  totalTime: Int(recipes?.totalTime ?? 0),
-                                  image: recipes?.image ?? "ImageDefault1024x768" + ".jpg")
+        let recipe = coreDataManager?.recipes[indexPath.row]
+        listRecipesCell.recipeEntity = recipe
+//        listRecipesCell.configure(title: recipe?.title ?? "",
+//                                  ingredients: recipe?.ingredients ?? "",
+//                                  yield: Int(recipe?.yield ?? 0),
+//                                  totalTime: Int(recipe?.totalTime ?? 0),
+//                                  image: recipe?.image ?? "ImageDefault1024x768" + ".jpg")
         return listRecipesCell
     }
     

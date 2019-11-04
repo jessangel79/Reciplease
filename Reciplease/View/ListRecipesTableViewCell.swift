@@ -8,8 +8,8 @@
 
 import UIKit
 
-class ListRecipesTableViewCell: UITableViewCell {
-    @IBOutlet weak var recipeImageView: UIImageView!
+final class ListRecipesTableViewCell: UITableViewCell {
+    @IBOutlet private weak var recipeImageView: UIImageView!
     @IBOutlet weak var titleRecipeLabel: UILabel!
     @IBOutlet weak var ingredientsLabel: UILabel!
     @IBOutlet weak var yieldLabel: UILabel!
@@ -21,32 +21,39 @@ class ListRecipesTableViewCell: UITableViewCell {
         customViewCell(view: grayView)
     }
     
-    func configure(title: String, ingredients: String, yield: Int, totalTime: Int?, image: String?) {
-        titleRecipeLabel.text = title.localizedCapitalized
-        ingredientsLabel.text = ingredients
-        yieldLabel.text = String(yield)
-        recipeImageView.load(urlImageString: image ?? "ImageDefault1024x768" + ".jpg")
-        calcTotalTime(totalTime ?? 0, totalTimeLabel: totalTimeLabel)
-        
-//        totalTimeLabel.text = String(totalTime ?? 0)
-//        totalTimeLabel.text = String(totalTime ?? 0) + " min"
-//        totalTimeLabel.text = String((totalTime ?? 0) / 60) + " h"
-//        calcTotalTime(totalTime)
+    var recipe: Recipe? {
+        didSet {
+            titleRecipeLabel.text = recipe?.label.localizedCapitalized
+            ingredientsLabel.text = recipe?.ingredientLines.joined(separator: ", ")
+            yieldLabel.text = String(recipe?.yield ?? 0)
+            totalTimeLabel.text = (recipe?.totalTime ?? 0).convertTimeToString
+            recipeImageView.load(urlImageString: recipe?.image ?? "ImageDefault1024x768" + ".jpg")
+        }
+    }
+
+    var recipeEntity: RecipeEntity? {
+        didSet {
+            titleRecipeLabel.text = recipeEntity?.title
+            ingredientsLabel.text = recipeEntity?.ingredients
+            yieldLabel.text = String(recipeEntity?.yield ?? 0)
+//            let totalTimeInt = Int(recipeEntity?.totalTime ?? 0)
+            totalTimeLabel.text = Int(recipeEntity?.totalTime ?? 0).convertTimeToString
+            recipeImageView.load(urlImageString: recipeEntity?.image)
+        }
     }
     
-//    override func setSelected(_ selected: Bool, animated: Bool) {
-//        super.setSelected(selected, animated: animated)
-//
-//        // Configure the view for the selected state
-//    }
-    
-// MARK: - In extension UIResponder
-//    fileprivate func calcTotalTime(_ totalTime: Int) {
-//        let totalTimeTemp = totalTime
-//        if totalTimeTemp < 60 {
-//            totalTimeLabel.text = String(totalTimeTemp) + " min"
-//        } else {
-//            totalTimeLabel.text = String(totalTimeTemp / 60) + " h"
-//        }
+    // A supprimer
+//    func configure(title: String, ingredients: String, yield: Int, totalTime: Int?, image: String?) {
+//        titleRecipeLabel.text = title.localizedCapitalized
+//        ingredientsLabel.text = ingredients
+//        yieldLabel.text = String(yield)
+//        recipeImageView.load(urlImageString: image ?? "ImageDefault1024x768" + ".jpg")
+//        calcTotalTime(totalTime ?? 0, totalTimeLabel: totalTimeLabel)
+//        
+////        listRecipesCell.configure(title: recipes.recipe.label,
+////                                  ingredients: ingredients,
+////                                  yield: recipes.recipe.yield,
+////                                  totalTime: recipes.recipe.totalTime ?? 0,
+////                                  image: recipes.recipe.image ?? "ImageDefault1024x768" + ".jpg")
 //    }
 }

@@ -38,6 +38,7 @@ class DetailFavoritesRecipesViewController: UIViewController {
                              url: cellule?.url,
                              coreDataManager: coreDataManager,
                              barButtonItem: favoritesBarButtonItem)
+        navigationController?.popViewController(animated: true)
     }
     
     // MARK: - Methods
@@ -52,10 +53,6 @@ class DetailFavoritesRecipesViewController: UIViewController {
         checkIfRecipeIsFavorite()
     }
     
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-    }
-    
     private func coreDataFunction() {
         guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else { return }
         let coreDataStack = appDelegate.coreDataStack
@@ -66,7 +63,8 @@ class DetailFavoritesRecipesViewController: UIViewController {
         titleRecipeLabel.text = cellule?.title
         ingredientsTextView.text = cellule?.ingredients
         yieldLabel.text = String(cellule.yield)
-        calcTotalTime(Int(cellule.totalTime), totalTimeLabel: totalTimeLabel)
+        let totalTimeInt = Int(cellule.totalTime)
+        totalTimeLabel.text = totalTimeInt.convertTimeToString
         recipeImageView.load(urlImageString: cellule.image)
     }
 

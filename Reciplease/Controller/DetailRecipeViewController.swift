@@ -50,11 +50,11 @@ class DetailRecipeViewController: UIViewController {
         customView(view: grayView)
         customButton(button: getDirectionsButton)
         configureRecipe()
-        checkIfRecipeIsFavorite()
     }
     
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        checkIfRecipeIsFavorite()
     }
     
     private func coreDataFunction() {
@@ -65,24 +65,20 @@ class DetailRecipeViewController: UIViewController {
 
     private func configureRecipe() {
         titleRecipeLabel.text = cellule.recipe.label.localizedCapitalized
-        ingredientsTextView.text = listOfIngredients()
+        ingredientsTextView.text = "- " + cellule.recipe.ingredientLines.joined(separator: "\n" + "- ")
         yieldLabel.text = String(cellule.recipe.yield)
-        calcTotalTime(cellule.recipe.totalTime ?? 0, totalTimeLabel: totalTimeLabel)
+        let totalTimeInt = Int(cellule.recipe.totalTime ?? 0)
+        totalTimeLabel.text = totalTimeInt.convertTimeToString
         recipeImageView.load(urlImageString: cellule.recipe.image ?? "ImageDefault1024x768" + ".jpg")
-        
-//        calcTotalTime(cellule.recipe.totalTime ?? 0)
-//        totalTimeLabel.text = String((cellule.recipe.totalTime ?? 0) / 60) + " h"
-//        totalTimeLabel.text = String(cellule.recipe.totalTime ?? 0) + " min"
-//        totalTimeLabel.text = String(cellule.recipe.totalTime ?? 0)
     }
     
-    private func listOfIngredients() -> String {
-        var listRecipe = String()
-        for ingredient in cellule.recipe.ingredientLines {
-            listRecipe += "- " + ingredient + "\n"
-        }
-        return listRecipe
-    }
+//    private func listOfIngredients() -> String {
+//        var listRecipe = String()
+//        for ingredient in cellule.recipe.ingredientLines {
+//            listRecipe += "- " + ingredient + "\n"
+//        }
+//        return listRecipe
+//    }
     
     private func checkIfRecipeIsFavorite() {
         guard let recipeTitle = cellule?.recipe.label else { return }
@@ -100,8 +96,10 @@ class DetailRecipeViewController: UIViewController {
     }
     
     private func addRecipeToFavorites() {
-        let ingredients = listOfIngredients()
-        let totalTime = Int16(cellule.recipe.totalTime ?? 0)
+//        let ingredients = listOfIngredients()
+//        let ingredients = cellule.recipe.ingredientLines.joined(separator: ", ")
+        let ingredients = "- " + cellule.recipe.ingredientLines.joined(separator: "\n" + "- ")
+        let totalTime = Int16(cellule.recipe.totalTime?.convertTimeToString ?? "") ?? 0
         let image = cellule.recipe.image ?? "ImageDefault1024x768" + ".jpg"
         let yield = Int16(cellule.recipe.yield)
         let url = cellule.recipe.url

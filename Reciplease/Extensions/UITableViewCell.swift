@@ -17,7 +17,5 @@ extension UITableViewCell {
         view.layer.cornerRadius = 4
         view.layer.borderColor = UIColor.white.cgColor
         view.layer.borderWidth = 1.0
-    //        view.layer.shadowColor = UIColor.black.cgColor
-    //        view.layer.shadowOpacity = 0.8
     }
 }

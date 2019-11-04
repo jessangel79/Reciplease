@@ -45,11 +45,17 @@ class RecipeService {
     }
     
     private func createRecipeSearchUrl(ingredientsList: [String]) -> URL? {
-        let ingredientUrl = "&q=" + ingredientsList.joined(separator: ",")
-        let apiKeyRecipe = "&app_key=\(keyRecipeSearch)"
-        guard let url = URL(string: recipeSession.urlStringApi + apiKeyRecipe + ingredientUrl) else { return nil }
-
+        let ingredientUrl = ingredientsList.joined(separator: ",")
+        guard let url = URL(string: recipeSession.urlStringApi + ingredientUrl) else { return nil }
         print(url)
         return url
     }
+    
+//    private func createRecipeSearchUrl(ingredientsList: [String]) -> URL? {
+//        let ingredientUrl = "&q=" + ingredientsList.joined(separator: ",")
+//        let apiKeyRecipe = "&app_key=\(keyRecipeSearch)"
+//        guard let url = URL(string: recipeSession.urlStringApi + apiKeyRecipe + ingredientUrl) else { return nil }
+//        print(url)
+//        return url
+//    }
 }

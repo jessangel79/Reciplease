@@ -8,11 +8,11 @@
 
 import UIKit
 
-class ListRecipesViewController: UIViewController {
+final class ListRecipesViewController: UIViewController {
     
     // MARK: - Outlets
     
-    @IBOutlet weak var recipesTableView: UITableView!
+    @IBOutlet private weak var recipesTableView: UITableView!
     
     // MARK: - Properties
     
@@ -30,22 +30,9 @@ class ListRecipesViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        let nib = UINib(nibName: StaticVariable.ListRecipesTableViewCell, bundle: nil)
-        recipesTableView.register(nib, forCellReuseIdentifier: StaticVariable.ListRecipesCell)
-        
+        let nib = UINib(nibName: Constants.ListRecipesTableViewCell, bundle: nil)
+        recipesTableView.register(nib, forCellReuseIdentifier: Constants.ListRecipesCell)
         recipesTableView.reloadData()
-    }
-    
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-    }
-    
-    private func listOfIngredients(recipes: Hit) -> String {
-        var listRecipe = String()
-        for ingredient in recipes.recipe.ingredientLines {
-            listRecipe += ingredient + ", "
-        }
-        return listRecipe
     }
 }
 
@@ -62,17 +49,13 @@ extension ListRecipesViewController: UITableViewDataSource, UITableViewDelegate 
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let listRecipesCell = tableView.dequeueReusableCell(
-            withIdentifier: StaticVariable.ListRecipesCell,
+            withIdentifier: Constants.ListRecipesCell,
             for: indexPath) as? ListRecipesTableViewCell else {
             return UITableViewCell()
         }
-        let recipes = recipesList[indexPath.row]
-        let ingredients = listOfIngredients(recipes: recipes)
-        listRecipesCell.configure(title: recipes.recipe.label,
-                                  ingredients: ingredients,
-                                  yield: recipes.recipe.yield,
-                                  totalTime: recipes.recipe.totalTime ?? 0,
-                                  image: recipes.recipe.image ?? "ImageDefault1024x768" + ".jpg")
+        let recipe = recipesList[indexPath.row]
+        listRecipesCell.recipe = recipe.recipe
+        
         return listRecipesCell
     }
     
