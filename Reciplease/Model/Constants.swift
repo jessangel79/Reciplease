@@ -8,7 +8,8 @@
 
 import Foundation
 
-// Trick to get static variable in Swift
+// MARK: - Trick to get static variable in Swift
+
 struct Constants {
     static let SearchCell = "SearchCell"
     static let ListRecipesCell = "ListRecipesCell"

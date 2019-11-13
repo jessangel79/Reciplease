@@ -22,15 +22,13 @@ class FakeResponseData {
     
     // MARK: - Data
     
-    static var correctData: Data? { // Data => non optionnel
+    static var correctData: Data {
         let bundle = Bundle(for: FakeResponseData.self)
         guard let url = bundle.url(forResource: "RecipesSearch", withExtension: "json") else {
             fatalError("RecipesSearch.json is not found.")
         }
-        return try? Data(contentsOf: url)
-        // Data => non optionnel
-//        guard let data = try? Data(contentsOf: url) else { return Data() }
-//        return data
+        guard let data = try? Data(contentsOf: url) else { return Data() }
+        return data
     }
     
     static let incorrectData = "erreur".data(using: .utf8)!

@@ -8,31 +8,26 @@
 
 import UIKit
 
-// Trick to get static variable in Swift
-//struct StaticVariableFavorite {
-//    static let ListRecipesCell = "ListRecipesCell"
-//}
-
-class FavoritesRecipesViewController: UIViewController {
+final class FavoritesRecipesViewController: UIViewController {
     
      // MARK: - Outlets
     
-    @IBOutlet weak var favoritesRecipesTableView: UITableView! {
+    @IBOutlet private weak var favoritesRecipesTableView: UITableView! {
         didSet { favoritesRecipesTableView.tableFooterView = UIView() }
     }
     
     // MARK: - Properties
     
-    var coreDataManager: CoreDataManager?
-    var cellSelected: RecipeEntity!
+    private var coreDataManager: CoreDataManager?
+    private var cellSelected: RecipeEntity?
     private let segueToRecipeDetailFavorite = "segueToRecipeDetailFavorite"
     
     // MARK: - Actions
 
-    @IBAction func deleteAllFavorites(_ sender: UIBarButtonItem) {
+    @IBAction private func deleteAllFavorites(_ sender: UIBarButtonItem) {
         coreDataManager?.deleteAllRecipes()
-        print("delete all recipes ok")
         favoritesRecipesTableView.reloadData()
+        debugFavorites(titleDebug: "All favorites deleted", coreDataManager: coreDataManager)
     }
     
     // MARK: - Methods
@@ -45,10 +40,7 @@ class FavoritesRecipesViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         coreDataFunction()
-        
-        print("In FavoritesRecipesViewController : ")
-        debugFavorites(titleDebug: "Recipes entity", coreDataManager: coreDataManager)
-        
+                
         let nib = UINib(nibName: Constants.ListRecipesTableViewCell, bundle: nil)
         favoritesRecipesTableView.register(nib, forCellReuseIdentifier: Constants.ListRecipesCell)
         favoritesRecipesTableView.reloadData()
@@ -80,11 +72,6 @@ extension FavoritesRecipesViewController: UITableViewDataSource {
         }
         let recipe = coreDataManager?.recipes[indexPath.row]
         listRecipesCell.recipeEntity = recipe
-//        listRecipesCell.configure(title: recipe?.title ?? "",
-//                                  ingredients: recipe?.ingredients ?? "",
-//                                  yield: Int(recipe?.yield ?? 0),
-//                                  totalTime: Int(recipe?.totalTime ?? 0),
-//                                  image: recipe?.image ?? "ImageDefault1024x768" + ".jpg")
         return listRecipesCell
     }
     

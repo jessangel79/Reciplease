@@ -8,31 +8,33 @@
 
 import UIKit
 
-class DetailFavoritesRecipesViewController: UIViewController {
+final class DetailFavoritesRecipesViewController: UIViewController {
     
     // MARK: - Outlets
-    @IBOutlet weak var grayView: UIView!
-    @IBOutlet weak var getDirectionsButton: UIButton!
-    @IBOutlet weak var favoritesBarButtonItem: UIBarButtonItem!
-    @IBOutlet weak var recipeImageView: UIImageView!
-    @IBOutlet weak var totalTimeLabel: UILabel!
-    @IBOutlet weak var yieldLabel: UILabel!
-    @IBOutlet weak var titleRecipeLabel: UILabel!
-    @IBOutlet weak var ingredientsTextView: UITextView!
+    
+    @IBOutlet private weak var grayView: UIView!
+    @IBOutlet private weak var getDirectionsButton: UIButton!
+    @IBOutlet private weak var favoritesBarButtonItem: UIBarButtonItem!
+    @IBOutlet private weak var recipeImageView: UIImageView!
+    @IBOutlet private weak var totalTimeLabel: UILabel!
+    @IBOutlet private weak var yieldLabel: UILabel!
+    @IBOutlet private weak var titleRecipeLabel: UILabel!
+    @IBOutlet private weak var ingredientsTextView: UITextView!
     
     // MARK: - Properties
 
-    var cellule: RecipeEntity!
-    var celluleHit: Hit!
-    var coreDataManager: CoreDataManager?
-    var recipeIsFavorite = false
+    var cellule: RecipeEntity?
+    private var coreDataManager: CoreDataManager?
+    private var recipeIsFavorite = false
    
     // MARK: - Actions
-    @IBAction func getDirectionsButtonTapped(_ sender: UIButton) {
-        guard let url = cellule.url else { return }
+    
+    @IBAction private func getDirectionsButtonTapped(_ sender: UIButton) {
+        guard let url = cellule?.url else { return }
         webViewRecipe(urlString: url)
     }
-    @IBAction func favoritesBarButtonItemTapped(_ sender: UIBarButtonItem) {
+    
+    @IBAction private func favoritesBarButtonItemTapped(_ sender: UIBarButtonItem) {
         checkIfRecipeIsFavorite()
         deleteRecipeFavorite(recipeTitle: cellule?.title,
                              url: cellule?.url,
@@ -60,17 +62,19 @@ class DetailFavoritesRecipesViewController: UIViewController {
     }
     
     private func configureRecipe() {
+        guard let yield = cellule?.yield else { return }
+        guard let totalTime = cellule?.totalTime else { return }
+        
         titleRecipeLabel.text = cellule?.title
         ingredientsTextView.text = cellule?.ingredients
-        yieldLabel.text = String(cellule.yield)
-        let totalTimeInt = Int(cellule.totalTime)
-        totalTimeLabel.text = totalTimeInt.convertTimeToString
-        recipeImageView.load(urlImageString: cellule.image)
+        yieldLabel.text = String(yield)
+        totalTimeLabel.text = Int(totalTime).convertTimeToString
+        recipeImageView.load(urlImageString: cellule?.image)
     }
 
     private func checkIfRecipeIsFavorite() {
-        guard let recipeTitle = cellule.title else { return }
-        guard let url = cellule.url else { return }
+        guard let recipeTitle = cellule?.title else { return }
+        guard let url = cellule?.url else { return }
         guard let checkIsRecipeIsFavorite = coreDataManager?.checkIsRecipeIsFavorite(recipeTitle: recipeTitle,
                                                                                      url: url) else { return }
 
@@ -82,19 +86,4 @@ class DetailFavoritesRecipesViewController: UIViewController {
             favoritesBarButtonItem.tintColor = .none
         }
     }
-
-//    private func deleteRecipeFavorite() {
-//        guard let recipeTitle = cellule?.title else { return }
-//        guard let image = cellule?.image else { return }
-//        coreDataManager?.deleteRecipe(recipeTitle: recipeTitle, image: image)
-//        setupBarButtonItem(color: .white)
-//
-//        debugFavorites(titleDebug: "Favorite deleted !!! ", coreDataManager: coreDataManager)
-//    }
-//
-//    fileprivate func setupBarButtonItem(color: UIColor) {
-//        favoritesBarButtonItem.tintColor = color
-//        navigationItem.rightBarButtonItem = favoritesBarButtonItem
-//    }
-
 }

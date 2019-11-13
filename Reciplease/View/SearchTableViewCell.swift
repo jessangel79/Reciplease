@@ -8,8 +8,9 @@
 
 import UIKit
 
-class SearchTableViewCell: UITableViewCell {
-    @IBOutlet weak var ingredientLabel: UILabel!
+final class SearchTableViewCell: UITableViewCell {
+    
+    @IBOutlet private weak var ingredientLabel: UILabel!
     
     override func awakeFromNib() {
         super.awakeFromNib()

@@ -71,19 +71,4 @@ final class CoreDataManagerTests: XCTestCase {
         let recipeIsFavorite = coreDataManager.checkIsRecipeIsFavorite(recipeTitle: "My Recipe", url: "http://www.seriouseats.com/recipes/2009/09/adult-brownie-chocolate-salt-coffee-andronicos-supermarket-san-francisco-recipe.html")
         XCTAssertFalse(recipeIsFavorite)
     }
-    
-//    func testCheckIsRecipeIsFavoriteMethod_WhenAnEntityIsCreated_ThenShouldBeInFavorites() {
-//        coreDataManager.createRecipe(title: "My Recipe", ingredients: "Ingredients", yield: 16, totalTime: 0, image: "https://www.edamam.com/web-img/de7/de75049edc890303d8fd1293d35938b2.jpg", url: "http://www.seriouseats.com/recipes/2009/09/adult-brownie-chocolate-salt-coffee-andronicos-supermarket-san-francisco-recipe.html")
-//        let recipeIsFavorite = coreDataManager.checkIsRecipeIsFavorite(recipeTitle: "My Recipe", url: "http://www.seriouseats.com/recipes/2009/09/adult-brownie-chocolate-salt-coffee-andronicos-supermarket-san-francisco-recipe.html")
-//        XCTAssertTrue(coreDataManager.recipes.count > 0)
-//        XCTAssertTrue(recipeIsFavorite)
-//    }
-    
-//    func testCheckIsRecipeIsFavoriteMethod_WhenAnEntityIsCreatedAndDeleted_ThenShouldBeNotInFavorites() {
-//        coreDataManager.createRecipe(title: "My Recipe", ingredients: "Ingredients", yield: 16, totalTime: 0, image: "https://www.edamam.com/web-img/de7/de75049edc890303d8fd1293d35938b2.jpg", url: "http://www.seriouseats.com/recipes/2009/09/adult-brownie-chocolate-salt-coffee-andronicos-supermarket-san-francisco-recipe.html")
-//        coreDataManager.deleteRecipe(recipeTitle: "My Recipe", url: "http://www.seriouseats.com/recipes/2009/09/adult-brownie-chocolate-salt-coffee-andronicos-supermarket-san-francisco-recipe.html")
-//
-//        let recipeIsFavorite = coreDataManager.checkIsRecipeIsFavorite(recipeTitle: "My Recipe", url: "http://www.seriouseats.com/recipes/2009/09/adult-brownie-chocolate-salt-coffee-andronicos-supermarket-san-francisco-recipe.html")
-//        XCTAssertFalse(recipeIsFavorite)
-//    }
 }

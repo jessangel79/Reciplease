@@ -8,18 +8,18 @@
 
 import UIKit
 
-class SearchRecipesViewController: UIViewController {
+final class SearchRecipesViewController: UIViewController {
 
     // MARK: - Outlets
 
-    @IBOutlet weak var ingredientTextField: UITextField!
-    @IBOutlet weak var addButton: UIButton!
-    @IBOutlet weak var searchButton: UIButton!
-    @IBOutlet weak var clearButton: UIButton!
-    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
-    @IBOutlet var allButtons: [UIButton]!
+    @IBOutlet private weak var ingredientTextField: UITextField!
+    @IBOutlet private weak var addButton: UIButton!
+    @IBOutlet private weak var searchButton: UIButton!
+    @IBOutlet private weak var clearButton: UIButton!
+    @IBOutlet private weak var activityIndicator: UIActivityIndicatorView!
+    @IBOutlet private var allButtons: [UIButton]!
     
-    @IBOutlet weak var ingredientsTableView: UITableView! { didSet { ingredientsTableView.tableFooterView = UIView() } }
+    @IBOutlet private weak var ingredientsTableView: UITableView! { didSet { ingredientsTableView.tableFooterView = UIView() } }
     
     // MARK: - Properties
 
@@ -36,12 +36,12 @@ class SearchRecipesViewController: UIViewController {
         ingredientsTableView.reloadData()
     }
     
-    @IBAction func clearButtonTapped(_ sender: UIButton) {
+    @IBAction private func clearButtonTapped(_ sender: UIButton) {
         ingredientsList.removeAll()
         ingredientsTableView.reloadData()
     }
     
-    @IBAction func searchButtonTapped(_ sender: UIButton) {
+    @IBAction private func searchButtonTapped(_ sender: UIButton) {
         toggleActivityIndicator(shown: true, activityIndicator: activityIndicator, validateButton: searchButton)
         getRecipes()
     }

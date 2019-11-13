@@ -23,9 +23,3 @@ extension RecipeProtocol {
         return "https://api.edamam.com/search?app_id=$efc09e97&app_key=\(keyRecipeSearch)&to=50&q="
     }
 }
-
-//extension RecipeProtocol {
-//    var urlStringApi: String {
-//        return "https://api.edamam.com/search?from=0&to=5&app_id=$efc09e97"
-//    }
-//}

@@ -35,7 +35,6 @@
 		3AF6D86123562A3700FAD8A6 /* RecipesSearch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AF6D86023562A3700FAD8A6 /* RecipesSearch.swift */; };
 		3AF6D86323562BC000FAD8A6 /* RecipesSearch.json in Resources */ = {isa = PBXBuildFile; fileRef = 3AF6D86223562BC000FAD8A6 /* RecipesSearch.json */; };
 		3AFF222E234E0B8F00502310 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AFF222D234E0B8F00502310 /* AppDelegate.swift */; };
-		3AFF2230234E0B8F00502310 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AFF222F234E0B8F00502310 /* SceneDelegate.swift */; };
 		3AFF2235234E0B8F00502310 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3AFF2233234E0B8F00502310 /* Main.storyboard */; };
 		3AFF2238234E0B8F00502310 /* Reciplease.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 3AFF2236234E0B8F00502310 /* Reciplease.xcdatamodeld */; };
 		3AFF223A234E0B9100502310 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3AFF2239234E0B9100502310 /* Assets.xcassets */; };
@@ -89,7 +88,6 @@
 		3AF6D86223562BC000FAD8A6 /* RecipesSearch.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = RecipesSearch.json; sourceTree = "<group>"; };
 		3AFF222A234E0B8F00502310 /* Reciplease.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Reciplease.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3AFF222D234E0B8F00502310 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		3AFF222F234E0B8F00502310 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		3AFF2234234E0B8F00502310 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		3AFF2237234E0B8F00502310 /* Reciplease.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Reciplease.xcdatamodel; sourceTree = "<group>"; };
 		3AFF2239234E0B9100502310 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -233,7 +231,6 @@
 			isa = PBXGroup;
 			children = (
 				3AFF222D234E0B8F00502310 /* AppDelegate.swift */,
-				3AFF222F234E0B8F00502310 /* SceneDelegate.swift */,
 				3AFF2239234E0B9100502310 /* Assets.xcassets */,
 				3AFF223B234E0B9100502310 /* LaunchScreen.storyboard */,
 				3AFF223E234E0B9100502310 /* Info.plist */,
@@ -479,7 +476,6 @@
 				3AFF222E234E0B8F00502310 /* AppDelegate.swift in Sources */,
 				3AF1FD6D2360C28700E4B50F /* DetailFavoritesRecipesViewController.swift in Sources */,
 				3A354C42236AEFAD00EB71FD /* Int.swift in Sources */,
-				3AFF2230234E0B8F00502310 /* SceneDelegate.swift in Sources */,
 				3AF6D86123562A3700FAD8A6 /* RecipesSearch.swift in Sources */,
 				3AFF2258234E488100502310 /* UIViewController.swift in Sources */,
 				3AF6D8542354BD9E00FAD8A6 /* CoreDataManager.swift in Sources */,

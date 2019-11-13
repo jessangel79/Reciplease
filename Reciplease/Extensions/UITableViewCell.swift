@@ -8,10 +8,9 @@
 
 import UIKit
 
-// MARK: - Extension to custom views
+// MARK: - Extension to custom views of TableViewCell
 
 extension UITableViewCell {
-    
     /// custom views
     func customViewCell(view: UIView) {
         view.layer.cornerRadius = 4

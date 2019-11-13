@@ -22,8 +22,6 @@ extension UIViewController {
     /// custom buttons
     func customButton(button: UIButton) {
         button.layer.cornerRadius = 4
-//        button.layer.shadowColor = UIColor.black.cgColor
-//        button.layer.shadowOpacity = 0.8
     }
     
     /// custom views
@@ -31,8 +29,6 @@ extension UIViewController {
         view.layer.cornerRadius = 4
         view.layer.borderColor = UIColor.white.cgColor
         view.layer.borderWidth = 1.0
-    //        view.layer.shadowColor = UIColor.black.cgColor
-    //        view.layer.shadowOpacity = 0.8
     }
 }
 
@@ -88,6 +84,7 @@ extension UIViewController {
 // MARK: - Extension to delete favorites and manage the button of favorites
 
 extension UIViewController {
+    /// Delete favorite
     func deleteRecipeFavorite(recipeTitle: String?, url: String?, coreDataManager: CoreDataManager?, barButtonItem: UIBarButtonItem) {
         coreDataManager?.deleteRecipe(recipeTitle: recipeTitle ?? "", url: url ?? "")
         setupBarButtonItem(color: .white, barButtonItem: barButtonItem)
@@ -95,6 +92,7 @@ extension UIViewController {
         debugFavorites(titleDebug: "Favorite deleted", coreDataManager: coreDataManager)
     }
     
+    /// Manage the button of favorites
     func setupBarButtonItem(color: UIColor, barButtonItem: UIBarButtonItem) {
         barButtonItem.tintColor = color
         navigationItem.rightBarButtonItem = barButtonItem
@@ -104,19 +102,21 @@ extension UIViewController {
 // MARK: - Extension to debug
 
 extension UIViewController {
-    /// function to debug ### To delete ###
+    /// function to debug
     func debugFavorites(titleDebug: String, coreDataManager: CoreDataManager?) {
         print(titleDebug)
-        print("--------------------")
+        print("-----------------------")
+        var index = 0
         for recipe in coreDataManager?.recipes ?? [RecipeEntity]() {
-            print("resultat callback :")
-            print(recipe.totalTime)
-            print(recipe.image as Any)
-            print(recipe.yield)
+            print("Recipes N° \(index + 1) :")
+            print("Total time : \(Int(recipe.totalTime).convertTimeToString)")
+            print("Servings : \(recipe.yield)")
+            print(recipe.image ?? "image error")
+            print(recipe.url ?? "url error")
             print(recipe.title ?? "title error")
             print(recipe.ingredients ?? "ingredients error")
-            print(recipe.url ?? "url error")
             print("\n")
+            index += 1
         }
     }
 }

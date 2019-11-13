@@ -8,21 +8,8 @@
 
 import Foundation
 
-//extension Int {
-//    var convertTimeToStringTest: String {
-//        if self == 0 {
-//            let timeNull = "N/A"
-//            return timeNull
-//        } else {
-//            let minutes = self % (60 * 60) / 60
-//            let hours = self / 60 / 60
-//            let timeFormatString = String(format: "%01dh%02dm", hours, minutes)
-//            return timeFormatString
-//        }
-//    }
-//}
-
 extension Int {
+    /// Convert the minutes to display in the better string format
     var convertTimeToString: String {
         if self == 0 {
             let timeNull = "N/A"
@@ -30,8 +17,8 @@ extension Int {
         } else {
             let minutes = self % (60)
             let hours = self / 60
-            let timeFormatString = String(format: "%01dh%02dm", hours, minutes)
-            let timeFormatStringMin = String(format: "%02d min", minutes)
+            let timeFormatString = String(format: "%01dh%02d", hours, minutes)
+            let timeFormatStringMin = String(format: "%02dm", minutes)
             let timeFormatNoMin = String(format: "%01dh", hours)
             if self < 60 {
                 return timeFormatStringMin

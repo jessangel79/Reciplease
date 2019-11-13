@@ -9,12 +9,13 @@
 import UIKit
 
 final class ListRecipesTableViewCell: UITableViewCell {
+    
     @IBOutlet private weak var recipeImageView: UIImageView!
-    @IBOutlet weak var titleRecipeLabel: UILabel!
-    @IBOutlet weak var ingredientsLabel: UILabel!
-    @IBOutlet weak var yieldLabel: UILabel!
-    @IBOutlet weak var totalTimeLabel: UILabel!
-    @IBOutlet weak var grayView: UIView!
+    @IBOutlet private weak var titleRecipeLabel: UILabel!
+    @IBOutlet private weak var ingredientsLabel: UILabel!
+    @IBOutlet private weak var yieldLabel: UILabel!
+    @IBOutlet private weak var totalTimeLabel: UILabel!
+    @IBOutlet private weak var grayView: UIView!
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -36,24 +37,8 @@ final class ListRecipesTableViewCell: UITableViewCell {
             titleRecipeLabel.text = recipeEntity?.title
             ingredientsLabel.text = recipeEntity?.ingredients
             yieldLabel.text = String(recipeEntity?.yield ?? 0)
-//            let totalTimeInt = Int(recipeEntity?.totalTime ?? 0)
             totalTimeLabel.text = Int(recipeEntity?.totalTime ?? 0).convertTimeToString
             recipeImageView.load(urlImageString: recipeEntity?.image)
         }
     }
-    
-    // A supprimer
-//    func configure(title: String, ingredients: String, yield: Int, totalTime: Int?, image: String?) {
-//        titleRecipeLabel.text = title.localizedCapitalized
-//        ingredientsLabel.text = ingredients
-//        yieldLabel.text = String(yield)
-//        recipeImageView.load(urlImageString: image ?? "ImageDefault1024x768" + ".jpg")
-//        calcTotalTime(totalTime ?? 0, totalTimeLabel: totalTimeLabel)
-//        
-////        listRecipesCell.configure(title: recipes.recipe.label,
-////                                  ingredients: ingredients,
-////                                  yield: recipes.recipe.yield,
-////                                  totalTime: recipes.recipe.totalTime ?? 0,
-////                                  image: recipes.recipe.image ?? "ImageDefault1024x768" + ".jpg")
-//    }
 }

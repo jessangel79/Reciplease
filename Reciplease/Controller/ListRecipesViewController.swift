@@ -17,7 +17,7 @@ final class ListRecipesViewController: UIViewController {
     // MARK: - Properties
     
     var recipesList = [Hit]()
-    var cellSelected: Hit!
+    private var cellSelected: Hit?
     private let segueToRecipeDetail = "segueToRecipeDetail"
 
     // MARK: - Methods
