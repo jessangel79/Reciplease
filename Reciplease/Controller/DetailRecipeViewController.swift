@@ -79,8 +79,7 @@ final class DetailRecipeViewController: UIViewController {
     private func checkIfRecipeIsFavorite() {
         guard let recipeTitle = cellule?.recipe.label else { return }
         guard let url = cellule?.recipe.url else { return }
-        guard let checkIsRecipeIsFavorite = coreDataManager?.checkIsRecipeIsFavorite(
-            recipeTitle: recipeTitle, url: url) else { return }
+        guard let checkIsRecipeIsFavorite = coreDataManager?.checkIfRecipeIsFavorite(recipeTitle: recipeTitle, url: url) else { return }
 
         recipeIsFavorite = checkIsRecipeIsFavorite
 

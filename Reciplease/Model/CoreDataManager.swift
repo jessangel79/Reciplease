@@ -58,7 +58,7 @@ final class CoreDataManager {
         coreDataStack.saveContext()
     }
     
-    func checkIsRecipeIsFavorite(recipeTitle: String, url: String) -> Bool {
+    func checkIfRecipeIsFavorite(recipeTitle: String, url: String) -> Bool {
         let request: NSFetchRequest<RecipeEntity> = RecipeEntity.fetchRequest()
         request.predicate = NSPredicate(format: "title == %@", recipeTitle)
         request.predicate = NSPredicate(format: "url == %@", url)

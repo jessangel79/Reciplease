@@ -17,9 +17,7 @@ final class RecipeService {
     init(recipeSession: RecipeProtocol = RecipeSession()) {
         self.recipeSession = recipeSession
     }
-    
-    private let keyRecipeSearch = valueForAPIKey(named: "API_RecipeSearch")
-    
+        
     // MARK: - Methods
     
     /// network call to get the recipes

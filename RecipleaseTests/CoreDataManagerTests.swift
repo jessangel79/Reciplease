@@ -43,7 +43,7 @@ final class CoreDataManagerTests: XCTestCase {
         XCTAssertTrue(coreDataManager.recipes[0].image == "https://www.edamam.com/web-img/de7/de75049edc890303d8fd1293d35938b2.jpg")
         XCTAssertTrue(coreDataManager.recipes[0].url == "http://www.seriouseats.com/recipes/2009/09/adult-brownie-chocolate-salt-coffee-andronicos-supermarket-san-francisco-recipe.html")
         
-        let recipeIsFavorite = coreDataManager.checkIsRecipeIsFavorite(recipeTitle: "My Recipe", url: "http://www.seriouseats.com/recipes/2009/09/adult-brownie-chocolate-salt-coffee-andronicos-supermarket-san-francisco-recipe.html")
+        let recipeIsFavorite = coreDataManager.checkIfRecipeIsFavorite(recipeTitle: "My Recipe", url: "http://www.seriouseats.com/recipes/2009/09/adult-brownie-chocolate-salt-coffee-andronicos-supermarket-san-francisco-recipe.html")
         XCTAssertTrue(coreDataManager.recipes.count > 0)
         XCTAssertTrue(recipeIsFavorite)
     }
@@ -55,10 +55,10 @@ final class CoreDataManagerTests: XCTestCase {
         
         coreDataManager.deleteRecipe(recipeTitle: "My Recipe One", url: "http://www.seriouseats.com/recipes/2009/09/adult-brownie-chocolate-salt-coffee-andronicos-supermarket-san-francisco-recipe.html")
         
-        let recipeIsFavoriteOne = coreDataManager.checkIsRecipeIsFavorite(recipeTitle: "My Recipe One", url: "http://www.seriouseats.com/recipes/2009/09/adult-brownie-chocolate-salt-coffee-andronicos-supermarket-san-francisco-recipe.html")
+        let recipeIsFavoriteOne = coreDataManager.checkIfRecipeIsFavorite(recipeTitle: "My Recipe One", url: "http://www.seriouseats.com/recipes/2009/09/adult-brownie-chocolate-salt-coffee-andronicos-supermarket-san-francisco-recipe.html")
         XCTAssertFalse(recipeIsFavoriteOne)
         
-        let recipeIsFavoriteTwo = coreDataManager.checkIsRecipeIsFavorite(recipeTitle: "My Recipe Two", url: "https://food52.com/recipes/67029-milk-chocolate-cocoa")
+        let recipeIsFavoriteTwo = coreDataManager.checkIfRecipeIsFavorite(recipeTitle: "My Recipe Two", url: "https://food52.com/recipes/67029-milk-chocolate-cocoa")
         XCTAssertTrue(recipeIsFavoriteTwo)
         XCTAssertFalse(coreDataManager.recipes.isEmpty)
     }
@@ -68,7 +68,7 @@ final class CoreDataManagerTests: XCTestCase {
         coreDataManager.deleteAllRecipes()
         XCTAssertTrue(coreDataManager.recipes.isEmpty)
         
-        let recipeIsFavorite = coreDataManager.checkIsRecipeIsFavorite(recipeTitle: "My Recipe", url: "http://www.seriouseats.com/recipes/2009/09/adult-brownie-chocolate-salt-coffee-andronicos-supermarket-san-francisco-recipe.html")
+        let recipeIsFavorite = coreDataManager.checkIfRecipeIsFavorite(recipeTitle: "My Recipe", url: "http://www.seriouseats.com/recipes/2009/09/adult-brownie-chocolate-salt-coffee-andronicos-supermarket-san-francisco-recipe.html")
         XCTAssertFalse(recipeIsFavorite)
     }
 }
