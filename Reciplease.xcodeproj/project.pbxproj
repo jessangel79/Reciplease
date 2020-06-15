@@ -25,6 +25,8 @@
 		3A493F8C235E1345001A4CD1 /* DetailRecipeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A493F8B235E1345001A4CD1 /* DetailRecipeViewController.swift */; };
 		3AA1EB892358C7E200141F2E /* ListRecipesTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AA1EB872358C7E200141F2E /* ListRecipesTableViewCell.swift */; };
 		3AA1EB8A2358C7E200141F2E /* ListRecipesTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3AA1EB882358C7E200141F2E /* ListRecipesTableViewCell.xib */; };
+		3AAB967A2412B76A00F0368C /* Pods_Reciplease.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6D8348304DFB8BAC467D4982 /* Pods_Reciplease.framework */; };
+		3AAB967B2412B76A00F0368C /* Pods_Reciplease.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 6D8348304DFB8BAC467D4982 /* Pods_Reciplease.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		3AF1FD6B2360986C00E4B50F /* FavoritesRecipesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AF1FD6A2360986C00E4B50F /* FavoritesRecipesViewController.swift */; };
 		3AF1FD6D2360C28700E4B50F /* DetailFavoritesRecipesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AF1FD6C2360C28700E4B50F /* DetailFavoritesRecipesViewController.swift */; };
 		3AF6D8522354BC0500FAD8A6 /* CoreDataStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AF6D8512354BC0500FAD8A6 /* CoreDataStack.swift */; };
@@ -43,7 +45,6 @@
 		3AFF2258234E488100502310 /* UIViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AFF2257234E488100502310 /* UIViewController.swift */; };
 		3AFF225A234E4A0B00502310 /* SearchRecipesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AFF2259234E4A0B00502310 /* SearchRecipesViewController.swift */; };
 		6499817749DA25A152716092 /* Pods_RecipleaseTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 882C93F932F72AFAB4D43762 /* Pods_RecipleaseTests.framework */; };
-		B6CD866C664C3B4EAEDF62D9 /* Pods_Reciplease.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6D8348304DFB8BAC467D4982 /* Pods_Reciplease.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -55,6 +56,20 @@
 			remoteInfo = Reciplease;
 		};
 /* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		3AAB967C2412B76A00F0368C /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				3AAB967B2412B76A00F0368C /* Pods_Reciplease.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		299EAEA86EC1D87320488DE6 /* Pods-Reciplease.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Reciplease.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Reciplease/Pods-Reciplease.debug.xcconfig"; sourceTree = "<group>"; };
@@ -77,6 +92,7 @@
 		3A493F8B235E1345001A4CD1 /* DetailRecipeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailRecipeViewController.swift; sourceTree = "<group>"; };
 		3AA1EB872358C7E200141F2E /* ListRecipesTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListRecipesTableViewCell.swift; sourceTree = "<group>"; };
 		3AA1EB882358C7E200141F2E /* ListRecipesTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ListRecipesTableViewCell.xib; sourceTree = "<group>"; };
+		3AAB96762412B75000F0368C /* Alamofire.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Alamofire.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		3AF1FD6A2360986C00E4B50F /* FavoritesRecipesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesRecipesViewController.swift; sourceTree = "<group>"; };
 		3AF1FD6C2360C28700E4B50F /* DetailFavoritesRecipesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailFavoritesRecipesViewController.swift; sourceTree = "<group>"; };
 		3AF6D8512354BC0500FAD8A6 /* CoreDataStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataStack.swift; sourceTree = "<group>"; };
@@ -109,7 +125,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B6CD866C664C3B4EAEDF62D9 /* Pods_Reciplease.framework in Frameworks */,
+				3AAB967A2412B76A00F0368C /* Pods_Reciplease.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -127,6 +143,7 @@
 		3A10ED1CC37FD929BF933F3C /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				3AAB96762412B75000F0368C /* Alamofire.framework */,
 				6D8348304DFB8BAC467D4982 /* Pods_Reciplease.framework */,
 				882C93F932F72AFAB4D43762 /* Pods_RecipleaseTests.framework */,
 			);
@@ -276,6 +293,7 @@
 				3AFF2228234E0B8F00502310 /* Resources */,
 				3A096C06234F9BBB0097AE70 /* ShellScript */,
 				831473B3FAD7C188C99099D0 /* [CP] Embed Pods Frameworks */,
+				3AAB967C2412B76A00F0368C /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -387,17 +405,16 @@
 			buildActionMask = 2147483647;
 			files = (
 			);
-			inputPaths = (
-				"${SRCROOT}/Pods/Target Support Files/Pods-Reciplease/Pods-Reciplease-frameworks.sh",
-				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Reciplease/Pods-Reciplease-frameworks-${CONFIGURATION}-input-files.xcfilelist",
 			);
 			name = "[CP] Embed Pods Frameworks";
-			outputPaths = (
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Reciplease/Pods-Reciplease-frameworks-${CONFIGURATION}-output-files.xcfilelist",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Reciplease/Pods-Reciplease-frameworks.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Reciplease/Pods-Reciplease-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		E89567EF1C4CEFEE05AABCDF /* [CP] Embed Pods Frameworks */ = {
@@ -405,17 +422,16 @@
 			buildActionMask = 2147483647;
 			files = (
 			);
-			inputPaths = (
-				"${SRCROOT}/Pods/Target Support Files/Pods-RecipleaseTests/Pods-RecipleaseTests-frameworks.sh",
-				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-RecipleaseTests/Pods-RecipleaseTests-frameworks-${CONFIGURATION}-input-files.xcfilelist",
 			);
 			name = "[CP] Embed Pods Frameworks";
-			outputPaths = (
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-RecipleaseTests/Pods-RecipleaseTests-frameworks-${CONFIGURATION}-output-files.xcfilelist",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-RecipleaseTests/Pods-RecipleaseTests-frameworks.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-RecipleaseTests/Pods-RecipleaseTests-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		EE6CA58C067CA6EC515EE71E /* [CP] Check Pods Manifest.lock */ = {
@@ -648,6 +664,8 @@
 			baseConfigurationReference = 299EAEA86EC1D87320488DE6 /* Pods-Reciplease.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = Reciplease/Reciplease.entitlements;
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = AS4ZG3MAQH;
 				INFOPLIST_FILE = "Reciplease/Supporting Files/Info.plist";
@@ -668,6 +686,8 @@
 			baseConfigurationReference = 2EE54A37731C84A7D6E6F7B1 /* Pods-Reciplease.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = Reciplease/Reciplease.entitlements;
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = AS4ZG3MAQH;
 				INFOPLIST_FILE = "Reciplease/Supporting Files/Info.plist";
