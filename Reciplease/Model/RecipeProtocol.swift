@@ -20,6 +20,12 @@ extension RecipeProtocol {
     }
     
     var urlStringApi: String {
-        return "https://api.edamam.com/search?app_id=efc09e97&app_key=\(keyRecipeSearch)&to=50&q="
+        return "https://api.edamam.com/api/recipes/v2?type=public&beta=false&app_id=efc09e97&app_key=\(keyRecipeSearch)&q="
     }
+    
+    // API Recipe search V2
+//"https://api.edamam.com/api/recipes/v2?type=public&beta=false&app_id=efc09e97&app_key=\(keyRecipeSearch)&q="
+    
+    // API Recipe search V1
+//    "https://api.edamam.com/search?app_id=efc09e97&app_key=\(keyRecipeSearch)&to=50&q="
 }
